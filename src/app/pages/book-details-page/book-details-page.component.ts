@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { Button } from '../../components/shared/button/button';
 import { BookDTO } from '../../models/book.model';
+import { SecureImagePipe } from '../../pipes/secure-image-pipe';
 
 @Component({
   selector: 'app-book-details-page',
   standalone: true,
-  imports: [CommonModule, Button, LucideAngularModule],
+  imports: [CommonModule, Button, LucideAngularModule, SecureImagePipe],
   templateUrl: './book-details-page.component.html',
   styleUrl: './book-details-page.component.scss',
 })

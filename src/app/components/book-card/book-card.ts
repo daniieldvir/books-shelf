@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { BookDTO } from '../../models/book.model';
+import { SecureImagePipe } from '../../pipes/secure-image-pipe';
 import { Button } from '../shared/button/button';
 
 @Component({
   selector: 'app-book-card',
-  imports: [LucideAngularModule, Button],
+  imports: [LucideAngularModule, Button, SecureImagePipe],
   templateUrl: './book-card.html',
   styleUrl: './book-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

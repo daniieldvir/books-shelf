@@ -1,122 +1,117 @@
 <section class="book-details">
   @if (book(); as book) {
-    <div class="hero">
-      <div
-        class="hero-bg"
-        [style.background-image]="
+  <div class="hero">
+    <div class="hero-bg" [style.background-image]="
           book.volumeInfo?.imageLinks?.thumbnail
-            ? 'url(' + book.volumeInfo?.imageLinks?.thumbnail + ')'
+            ? 'url(' + (book.volumeInfo?.imageLinks?.thumbnail | secureImage) + ')'
             : 'none'
-        "
-      ></div>
-      <div class="hero-overlay"></div>
+        "></div>
+    <div class="hero-overlay"></div>
 
-      <div class="hero-content">
-        <div class="cover">
-          @if (book.volumeInfo?.imageLinks?.thumbnail) {
-            <img [src]="book.volumeInfo?.imageLinks?.thumbnail" [alt]="book.volumeInfo?.title" />
-          } @else {
-            <div class="cover-placeholder">
-              <lucide-icon name="book-open" size="48" />
-            </div>
-          }
+    <div class="hero-content">
+      <div class="cover">
+        @if (book.volumeInfo?.imageLinks?.thumbnail) {
+        <img [src]="book.volumeInfo?.imageLinks?.thumbnail | secureImage" [alt]="book.volumeInfo?.title" />
+        } @else {
+        <div class="cover-placeholder">
+          <lucide-icon name="book-open" size="48" />
         </div>
-
-        <div class="hero-text">
-          @if (book.volumeInfo?.categories?.length) {
-            <div class="category-badge">{{ book.volumeInfo?.categories?.[0] }}</div>
-          }
-          <h1 class="title">{{ book.volumeInfo?.title }}</h1>
-          @if (book.volumeInfo?.subtitle) {
-            <p class="subtitle">{{ book.volumeInfo?.subtitle }}</p>
-          }
-          @if (book.volumeInfo?.authors?.length) {
-            <p class="authors">{{ book.volumeInfo?.authors?.join(', ') }}</p>
-          }
-
-          @if (book.volumeInfo?.averageRating) {
-            <div class="rating">
-              <div class="stars">
-                @for (star of [1, 2, 3, 4, 5]; track star) {
-                  <span class="star" [class.filled]="star <= (book.volumeInfo?.averageRating ?? 0)"
-                    >★</span
-                  >
-                }
-              </div>
-              <span class="rating-value">{{ book.volumeInfo?.averageRating }}/5</span>
-              @if (book.volumeInfo?.ratingsCount) {
-                <span class="rating-count">({{ book.volumeInfo?.ratingsCount }} ratings)</span>
-              }
-            </div>
-          }
-        </div>
+        }
       </div>
-    </div>
 
-    <div class="meta-strip">
-      @if (book.volumeInfo?.publishedDate) {
-        <div class="meta-chip">
-          <lucide-icon name="calendar-days" size="14" />
-          <span>{{ book.volumeInfo?.publishedDate }}</span>
-        </div>
-      }
-      @if (book.volumeInfo?.pageCount) {
-        <div class="meta-chip">
-          <lucide-icon name="book" size="14" />
-          <span>{{ book.volumeInfo?.pageCount }} pages</span>
-        </div>
-      }
-      @if (book.volumeInfo?.publisher) {
-        <div class="meta-chip">
-          <lucide-icon name="building-2" size="14" />
-          <span>{{ book.volumeInfo?.publisher }}</span>
-        </div>
-      }
-      @if (book.volumeInfo?.language) {
-        <div class="meta-chip">
-          <lucide-icon name="globe" size="14" />
-          <span>{{ book.volumeInfo?.language | uppercase }}</span>
-        </div>
-      }
-    </div>
+      <div class="hero-text">
+        @if (book.volumeInfo?.categories?.length) {
+        <div class="category-badge">{{ book.volumeInfo?.categories?.[0] }}</div>
+        }
+        <h1 class="title">{{ book.volumeInfo?.title }}</h1>
+        @if (book.volumeInfo?.subtitle) {
+        <p class="subtitle">{{ book.volumeInfo?.subtitle }}</p>
+        }
+        @if (book.volumeInfo?.authors?.length) {
+        <p class="authors">{{ book.volumeInfo?.authors?.join(', ') }}</p>
+        }
 
-    <div class="body">
-      @if (book.volumeInfo?.description) {
-        <div class="card">
-          <h2 class="card-title">
-            <lucide-icon name="align-left" size="16" />
-            About this book
-          </h2>
-          <p class="description-text">{{ book.volumeInfo?.description }}</p>
-        </div>
-      }
-
-      @if (book.volumeInfo?.industryIdentifiers?.length) {
-        <div class="card identifiers-card">
-          <h2 class="card-title">
-            <lucide-icon name="hash" size="16" />
-            Identifiers
-          </h2>
-          <div class="identifiers">
-            @for (id of book.volumeInfo?.industryIdentifiers; track id.identifier) {
-              <div class="identifier-row">
-                <span class="id-type">{{ id.type?.replace('_', ' ') }}</span>
-                <span class="id-value">{{ id.identifier }}</span>
-              </div>
+        @if (book.volumeInfo?.averageRating) {
+        <div class="rating">
+          <div class="stars">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+            <span class="star" [class.filled]="star <= (book.volumeInfo?.averageRating ?? 0)">★</span>
             }
           </div>
+          <span class="rating-value">{{ book.volumeInfo?.averageRating }}/5</span>
+          @if (book.volumeInfo?.ratingsCount) {
+          <span class="rating-count">({{ book.volumeInfo?.ratingsCount }} ratings)</span>
+          }
         </div>
-      }
+        }
+      </div>
     </div>
+  </div>
 
-    <div class="actions">
-      <app-button [variant]="'secondary'" [label]="'Back to Library'" (onClick)="navigateBack()" />
+  <div class="meta-strip">
+    @if (book.volumeInfo?.publishedDate) {
+    <div class="meta-chip">
+      <lucide-icon name="calendar-days" size="14" />
+      <span>{{ book.volumeInfo?.publishedDate }}</span>
     </div>
+    }
+    @if (book.volumeInfo?.pageCount) {
+    <div class="meta-chip">
+      <lucide-icon name="book" size="14" />
+      <span>{{ book.volumeInfo?.pageCount }} pages</span>
+    </div>
+    }
+    @if (book.volumeInfo?.publisher) {
+    <div class="meta-chip">
+      <lucide-icon name="building-2" size="14" />
+      <span>{{ book.volumeInfo?.publisher }}</span>
+    </div>
+    }
+    @if (book.volumeInfo?.language) {
+    <div class="meta-chip">
+      <lucide-icon name="globe" size="14" />
+      <span>{{ book.volumeInfo?.language | uppercase }}</span>
+    </div>
+    }
+  </div>
+
+  <div class="body">
+    @if (book.volumeInfo?.description) {
+    <div class="card">
+      <h2 class="card-title">
+        <lucide-icon name="align-left" size="16" />
+        About this book
+      </h2>
+      <p class="description-text">{{ book.volumeInfo?.description }}</p>
+    </div>
+    }
+
+    @if (book.volumeInfo?.industryIdentifiers?.length) {
+    <div class="card identifiers-card">
+      <h2 class="card-title">
+        <lucide-icon name="hash" size="16" />
+        Identifiers
+      </h2>
+      <div class="identifiers">
+        @for (id of book.volumeInfo?.industryIdentifiers; track id.identifier) {
+        <div class="identifier-row">
+          <span class="id-type">{{ id.type?.replace('_', ' ') }}</span>
+          <span class="id-value">{{ id.identifier }}</span>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="actions">
+    <app-button [variant]="'secondary'" [label]="'Back to Library'" (onClick)="navigateBack()" />
+  </div>
   } @else {
-    <div class="empty-state">
-      <lucide-icon name="book-x" size="48" />
-      <p>No book selected.</p>
-      <app-button [variant]="'secondary'" [label]="'Go to Library'" (onClick)="navigateBack()" />
-    </div>
+  <div class="empty-state">
+    <lucide-icon name="book-x" size="48" />
+    <p>No book selected.</p>
+    <app-button [variant]="'secondary'" [label]="'Go to Library'" (onClick)="navigateBack()" />
+  </div>
   }
 </section>
