@@ -1,0 +1,5 @@
+<div class="pagination">
+  <app-button (onClick)="prevPage()" [disabled]="page() === 0" [label]="'Previous'" />
+  <span class="page-indicator">Page {{ page() + 1 }}</span>
+  <app-button (onClick)="nextPage()" [disabled]="!hasMore()" [label]="'Next'" />
+</div>

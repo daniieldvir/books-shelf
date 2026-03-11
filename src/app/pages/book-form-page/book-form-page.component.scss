@@ -1,0 +1,92 @@
+.book-form-page {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+
+  .header {
+    margin-bottom: 2.5rem;
+
+    .title {
+      margin: 0 0 0.35rem;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-soft);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border-light);
+      }
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 2rem;
+
+      .full {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  .error {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #b45309;
+    font-weight: 500;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-light);
+  }
+}
+
+@media (max-width: 640px) {
+  .book-form-page {
+    padding: 1.5rem 1rem 3rem;
+
+    .header .title {
+      font-size: 1.7rem;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+}

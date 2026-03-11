@@ -1,0 +1,17 @@
+<div class="search-container fade-in">
+  <div class="input-wrapper">
+    <lucide-icon name="search" class="icon" [size]="20"></lucide-icon>
+
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search for books, authors..."
+      [value]="searchTerm() || initialValue()"
+      (input)="onSearchTermChanged($event)"
+    />
+
+    @if (hasValue()) {
+      <lucide-icon name="x" class="x-icon" [size]="18" (click)="onClearSearch()" />
+    }
+  </div>
+</div>

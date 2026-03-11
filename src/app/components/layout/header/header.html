@@ -1,0 +1,25 @@
+<header class="app-header">
+  <div class="inner container">
+    <div class="brand" (click)="handleNavigateToHome()">
+      <span class="logo">📚</span>
+      <div class="text">
+        <span class="title">Bookshelf</span>
+        <span class="subtitle">Explore, track, and love your books</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <app-button
+        [icon]="{ name: 'house', size: '16' }"
+        [variant]="'secondary'"
+        (onClick)="handleNavigateToHome()"
+      />
+
+      <app-button
+        [icon]="{ name: 'heart', size: '16' }"
+        [variant]="'secondary'"
+        (onClick)="handleNavigateToFavorites()"
+      />
+    </div>
+  </div>
+</header>

@@ -1,0 +1,35 @@
+<div class="book-list-container">
+  @if (!books()) {
+    <div class="empty">No books found</div>
+  } @else {
+    <ul class="book-list">
+      @for (book of books(); track book.id) {
+        <app-book-card
+          [book]="book"
+          [isFavorite]="checkFavorite(book.id)"
+          (moveToBookDetails)="handleMoveToBookDetails($event)"
+          (editBook)="handleEditBook($event)"
+          (deleteBook)="handleOpenDeletePopup($event)"
+          (toggleFavorite)="handleToggleFavorite($event)"
+        />
+      }
+    </ul>
+  }
+
+  @if (loading()) {
+    <div class="loading">
+      <lucide-icon name="loader-circle" size="24" />
+    </div>
+  }
+</div>
+
+@if (isDeletePopupOpen()) {
+  <app-popup
+    [title]="'Delete Book'"
+    [actionLabel]="'Delete'"
+    [(isOpen)]="isDeletePopupOpen"
+    (onSave)="handleDeleteBook()"
+  >
+    <p>Are you sure you want to delete this book?</p>
+  </app-popup>
+}

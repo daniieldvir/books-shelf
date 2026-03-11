@@ -1,0 +1,44 @@
+:host {
+  display: block;
+  width: 100%;
+
+  .favorites-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding-bottom: 5rem;
+    animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    padding-top: 2rem;
+
+    .title {
+      margin: 0 0 0.35rem;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.15;
+      padding-bottom: 2rem;
+    }
+
+    .empty {
+      padding: 4rem 2rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px dashed var(--border-mid);
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .book-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+  }
+}

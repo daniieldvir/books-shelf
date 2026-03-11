@@ -1,0 +1,21 @@
+<section class="home-page">
+  <div class="top-bar">
+    <app-search [initialValue]="searchTerm()" (searchTermChanged)="onSearchTermChanged($event)" />
+    <app-button [variant]="'primary'" (onClick)="handleAddBook()" [label]="'Add Book'" />
+  </div>
+
+  @if (!books() || books().length === 0) {
+    <div class="empty">No books found</div>
+  } @else if (loading()) {
+    <div class="loading">
+      <lucide-icon name="loader-circle" size="24" />
+    </div>
+  } @else {
+    <app-book-list [books]="books()" />
+    <app-pagination
+      [page]="page()"
+      [hasMore]="books().length >= 20"
+      (pageChange)="onPageChanged($event)"
+    />
+  }
+</section>

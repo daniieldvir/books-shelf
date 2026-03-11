@@ -1,0 +1,85 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(253, 249, 244, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition-base);
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: var(--primary);
+        color: #ffffff;
+        font-size: 1.1rem;
+        transition: var(--transition-base);
+      }
+
+      .text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+
+        .title {
+          font-size: 1.2rem;
+          font-weight: 800;
+          letter-spacing: -0.03em;
+          color: var(--text-main);
+          font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .subtitle {
+          font-size: 0.68rem;
+          font-weight: 500;
+          color: var(--text-soft);
+          text-transform: uppercase;
+          letter-spacing: 0.07em;
+          margin-top: 1px;
+        }
+      }
+    }
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    --button-width: 30px;
+    --button-height: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-header .inner {
+    padding: 0.75rem 1rem;
+
+    .brand .text .subtitle {
+      display: none;
+    }
+  }
+}

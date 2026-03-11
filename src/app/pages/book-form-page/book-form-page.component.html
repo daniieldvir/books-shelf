@@ -1,0 +1,87 @@
+<section class="book-form-page">
+  <header class="header">
+    <div>
+      <h1 class="title">{{ pageTitle() }} Book</h1>
+      <p class="subtitle">
+        Fill in the details below to {{ pageTitle().toLowerCase() }} a book to your collection.
+      </p>
+    </div>
+  </header>
+
+  <form class="form" (submit)="handleSubmit($event)">
+    <div class="section-label">Basic Info</div>
+    <div class="grid">
+      <app-form-field
+        [label]="'Title'"
+        [required]="true"
+        [value]="form().title"
+        [error]="!!error()"
+        (onChange)="handleChange('title', $event)"
+      />
+      <app-form-field
+        [label]="'Author'"
+        [required]="true"
+        [value]="form().author"
+        [error]="!!error()"
+        (onChange)="handleChange('author', $event)"
+      />
+      <app-form-field
+        [label]="'Subtitle'"
+        [value]="form().subtitle"
+        (onChange)="handleChange('subtitle', $event)"
+      />
+      <app-form-field
+        [label]="'Published Year'"
+        [required]="true"
+        type="number"
+        [value]="form().publishedDate"
+        [error]="!!error()"
+        (onChange)="handleChange('publishedDate', $event)"
+      />
+      <app-form-field
+        [label]="'Category'"
+        [value]="form().category"
+        (onChange)="handleChange('category', $event)"
+      />
+      <app-form-field
+        [label]="'Language'"
+        [value]="form().language"
+        (onChange)="handleChange('language', $event)"
+      />
+    </div>
+
+    <div class="section-label">Cover & Description</div>
+    <div class="grid">
+      <app-form-field
+        class="full"
+        [label]="'Image URL'"
+        [value]="form().image"
+        (onChange)="handleChange('image', $event)"
+      />
+      <app-form-field
+        class="full"
+        [label]="'Description'"
+        [value]="form().description"
+        [isTextarea]="true"
+        (onChange)="handleChange('description', $event)"
+      />
+    </div>
+
+    @if (error()) {
+      <p class="error">
+        <lucide-icon name="alert-circle" size="14" />
+        {{ error() }}
+      </p>
+    }
+
+    <footer class="actions">
+      <app-button
+        [variant]="'secondary'"
+        [label]="'Cancel'"
+        type="button"
+        (onClick)="handleCancel()"
+      />
+      <app-button [variant]="'primary'" [label]="'Save'" type="submit" />
+    </footer>
+  </form>
+</section>

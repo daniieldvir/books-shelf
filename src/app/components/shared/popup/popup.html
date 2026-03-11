@@ -1,0 +1,15 @@
+<div class="popup">
+  <div class="content">
+    <div class="header">
+      <h3 class="title">{{ title() }}</h3>
+      <lucide-icon name="x" size="16" (click)="handleCancel()" />
+    </div>
+    <div class="body">
+      <ng-content></ng-content>
+    </div>
+    <div class="footer">
+      <app-button [variant]="'secondary'" [label]="'Cancel'" (onClick)="handleCancel()" />
+      <app-button [variant]="'primary'" [label]="actionLabel()" (onClick)="handleSave()" />
+    </div>
+  </div>
+</div>

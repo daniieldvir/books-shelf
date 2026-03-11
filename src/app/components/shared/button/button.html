@@ -1,0 +1,8 @@
+<button class="button" [class]="variant()" [disabled]="disabled()" (click)="handleClick()">
+  @if (icon(); as icon) {
+    <lucide-icon [name]="icon.name" [size]="icon.size" />
+  }
+  @if (label()) {
+    <span class="label">{{ label() }}</span>
+  }
+</button>

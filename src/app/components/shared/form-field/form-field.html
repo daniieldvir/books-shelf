@@ -1,0 +1,28 @@
+@if (!isTextarea()) {
+  <div class="field">
+    <div class="label-container">
+      <label class="label" for="id">{{ label() }}</label>
+      @if (required()) {
+        <span class="required">*</span>
+      }
+    </div>
+    <input
+      [class]="'input ' + (error() ? 'error' : '')"
+      [type]="type()"
+      id="id"
+      [value]="value()"
+      (change)="handleOnChange($event)"
+    />
+  </div>
+} @else {
+  <div class="field">
+    <label class="label" for="id">{{ label() }}</label>
+    <textarea
+      [class]="'textarea ' + (error() ? 'error' : '')"
+      id="id"
+      rows="4"
+      [value]="value()"
+      (change)="handleOnChange($event)"
+    ></textarea>
+  </div>
+}

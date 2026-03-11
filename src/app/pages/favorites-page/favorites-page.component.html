@@ -1,0 +1,8 @@
+<div class="favorites-page">
+  <h1 class="title">Favorites</h1>
+  @if (favorites().length === 0) {
+    <div class="empty">No favorites found</div>
+  } @else {
+    <app-book-list [books]="favorites()" />
+  }
+</div>

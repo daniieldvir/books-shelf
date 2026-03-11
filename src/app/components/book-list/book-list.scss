@@ -1,0 +1,66 @@
+.book-list-container {
+  width: 100%;
+  animation: fadeSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  .empty {
+    padding: 4rem 2rem;
+    border-radius: var(--radius-lg);
+    background: var(--bg-card);
+    border: 1px dashed var(--border-mid);
+    text-align: center;
+    color: var(--text-soft);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .book-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+    color: var(--accent);
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .book-list-container .book-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .book-list-container .book-list {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}

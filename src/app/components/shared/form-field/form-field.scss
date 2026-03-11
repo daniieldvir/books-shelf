@@ -1,0 +1,79 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &--full {
+    grid-column: 1 / -1;
+  }
+
+  .label-container {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    .label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .required {
+      color: var(--accent);
+      font-size: 1rem;
+      line-height: 1;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid #c8cdd6;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    outline: none;
+    background-color: #ffffff;
+    font-family: inherit;
+    transition:
+      border-color 0.18s ease,
+      box-shadow 0.18s ease,
+      background-color 0.18s ease;
+
+    &::placeholder {
+      color: var(--text-soft);
+      font-weight: 400;
+    }
+
+    &:hover:not(:focus) {
+      border-color: var(--accent-light);
+    }
+
+    &:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+      background-color: #fff;
+    }
+
+    &.error {
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.12);
+      background-color: rgba(255, 251, 245, 1);
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.65;
+  }
+}

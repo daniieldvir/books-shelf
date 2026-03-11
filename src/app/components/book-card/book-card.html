@@ -1,0 +1,55 @@
+@if (book(); as book) {
+  <article class="book-card">
+    <app-button
+      class="favorite-button"
+      [class.is-favorite]="isFavorite()"
+      (onClick)="handleToggleFavorite(book)"
+      [icon]="{ name: 'heart', size: '16' }"
+    />
+
+    <div class="image-wrapper">
+      <img
+        class="image"
+        [src]="book.volumeInfo?.imageLinks?.thumbnail || 'assets/placeholder-book.png'"
+        [alt]="book.volumeInfo?.title"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="body">
+      <h3 class="title">
+        {{ book.volumeInfo?.title }}
+      </h3>
+
+      @if (book.volumeInfo?.authors?.length) {
+        <p class="authors">
+          {{ book.volumeInfo?.authors?.join(', ') }}
+        </p>
+      }
+
+      <div class="info-footer">
+        @if (book.volumeInfo?.publishedDate; as date) {
+          <div class="published-date">
+            <lucide-icon name="calendar-days" size="16" />
+            <span class="date-text">{{ date.substring(0, 4) }}</span>
+          </div>
+        }
+
+        <div class="actions">
+          <app-button
+            (onClick)="handleMoveToBookDetails(book)"
+            [icon]="{ name: 'eye', size: '16' }"
+          />
+          <app-button
+            (onClick)="handleEditBook(book)"
+            [icon]="{ name: 'square-pen', size: '16' }"
+          />
+          <app-button
+            (onClick)="handleDeleteBook(book.id)"
+            [icon]="{ name: 'trash-2', size: '16' }"
+          />
+        </div>
+      </div>
+    </div>
+  </article>
+}
